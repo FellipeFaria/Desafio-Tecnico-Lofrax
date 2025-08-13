@@ -160,6 +160,4 @@ Quer ir além? Aqui estão algumas ideias para impressionar:
 2.  Faça o push do seu código, garantindo que o `README.md` esteja completo.
 3.  Envie o link do repositório para o recrutador.
 
-**Prazo:** 7 dias a partir do recebimento deste desafio.
-
 Boa sorte e divirta-se! Estamos ansiosos para ver seu trabalho.
