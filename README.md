@@ -112,7 +112,6 @@ Não existe uma "solução perfeita". Estamos interessados em ver como você abo
 2.  **Qualidade do Código e Boas Práticas:**
     * Código limpo, legível e de fácil manutenção.
     * Uso de convenções de nomenclatura consistentes.
-    * Aplicação de princípios de software como DRY e KISS.
     * Uso de ferramentas de qualidade de código (linters, formatters) é um grande diferencial.
 
 3.  **Modularização e Gerenciamento de Estado:**
