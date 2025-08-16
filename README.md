@@ -1,162 +1,148 @@
-# Desafio Técnico Frontend - Dashboard Financeiro
+# LISTA DE ATIVIDADES
 
-## Objetivo
+### Atividade 1: Criação de um Endpoint Simples
 
-Olá, candidato(a)!
-
-Este desafio foi projetado para avaliarmos suas habilidades e fundamentos em desenvolvimento frontend. Queremos entender como você estrutura um projeto, escreve código, lida com dados assíncronos e documenta seu trabalho.
-
-O objetivo não é apenas "entregar a funcionalidade", mas demonstrar sua proficiência em boas práticas, arquitetura de software e sua capacidade de tomar decisões técnicas sólidas, independentemente da ferramenta escolhida.
-
-##  A Tarefa (Aplicação)
-
-Você deve criar um pequeno dashboard para visualização de transações financeiras. A aplicação deverá consumir dados de uma API mock (detalhada abaixo) e exibi-los de forma clara e interativa para o usuário.
-
-### Funcionalidades Essenciais
-
-1.  **Listagem de Transações:**
-    * Exibir uma lista com todas as transações recebidas da API.
-    * Cada item da lista deve mostrar, no mínimo: a descrição, a categoria, o valor e a data da transação.
-    * O valor da transação deve ser formatado como moeda local (ex: R$).
-    * Transações com o tipo `expense` (despesa) devem ter seu valor exibido com uma cor distinta (ex: vermelho) e um sinal de negativo. Transações do tipo `income` (receita) devem ter outra cor (ex: verde).
-
-2.  **Resumo Financeiro:**
-    * Em um local de destaque na página (como um cabeçalho), deve haver um resumo com:
-        * O total de receitas (`income`).
-        * O total de despesas (`expense`).
-        * O saldo total (receitas - despesas).
-
-3.  **Filtro de Transações:**
-    * Adicionar um campo de texto que permita ao usuário filtrar as transações em tempo real pela sua **descrição**.
-
-## A Tarefa (API)
-
-Para simplificar, você não precisará construir um backend. Recomendamos o uso do `json-server` para criar uma API REST local a partir de um arquivo `db.json`.
-
-Crie um arquivo `db.json` na raiz do seu projeto com a seguinte estrutura de dados:
+**Objetivo:** Usando um framework web de sua preferência (como Express.js, Flask, Spring Boot, etc.), crie um endpoint de API `GET /status`. Este endpoint deve retornar uma resposta em formato JSON com o seguinte corpo:
 
 ```json
 {
-  "transactions": [
-    {
-      "id": 1,
-      "description": "Salário Mensal",
-      "category": "Salário",
-      "price": 5500.00,
-      "type": "income",
-      "createdAt": "2025-08-01T10:00:00Z"
-    },
-    {
-      "id": 2,
-      "description": "Aluguel",
-      "category": "Moradia",
-      "price": 1200.00,
-      "type": "expense",
-      "createdAt": "2025-08-03T14:30:00Z"
-    },
-    {
-      "id": 3,
-      "description": "Supermercado",
-      "category": "Alimentação",
-      "price": 450.50,
-      "type": "expense",
-      "createdAt": "2025-08-05T18:45:00Z"
-    },
-    {
-      "id": 4,
-      "description": "Venda de item usado",
-      "category": "Venda",
-      "price": 300.00,
-      "type": "income",
-      "createdAt": "2025-08-06T11:00:00Z"
-    },
-    {
-      "id": 5,
-      "description": "Conta de Internet",
-      "category": "Contas",
-      "price": 99.90,
-      "type": "expense",
-      "createdAt": "2025-08-10T09:00:00Z"
-    },
-    {
-      "id": 6,
-      "description": "Restaurante",
-      "category": "Lazer",
-      "price": 100.10,
-      "type": "expense",
-      "createdAt": "2025-08-11T20:15:00Z"
-    }
-  ]
+  "status": "OK",
+  "timestamp": "2024-08-16T12:00:00.000Z"
 }
 ```
 
-**Endpoint a ser consumido:**
-* `GET /transactions`: Retorna a lista completa de transações.
-* **Observação:** O resumo financeiro (`income`, `expense`, `total`) deverá ser **calculado no frontend** a partir da lista de transações.
+**Observação:** O campo `timestamp` deve ser a data e hora atual no formato ISO 8601.
 
-## 🛠 Requisitos Técnicos
+**O que avalia:** Conhecimento básico sobre como criar um servidor web, rotas e retornar respostas em JSON.
 
-* **Linguagem/Framework:** **Você tem total liberdade para escolher a tecnologia!** Pode usar JavaScript puro, TypeScript, ou qualquer framework/biblioteca que preferir (React, Vue, Angular, Svelte, Solid, etc.). A avaliação será focada nos conceitos e fundamentos, não na ferramenta.
-* **Versionamento:** O projeto deve ser versionado com **Git** e hospedado em um repositório público (GitHub, GitLab, etc.). Seu histórico de commits será avaliado.
-* **Estilização:** Você também tem liberdade para escolher a abordagem de estilização: CSS puro, pré-processadores (Sass/SCSS), CSS-in-JS (Styled Components, Emotion), ou frameworks de CSS (Tailwind CSS, Bootstrap).
-* **Testes:** A qualidade do software é fundamental. Escreva testes que julgar pertinentes para garantir o funcionamento da aplicação (ex: testes unitários para funções de cálculo/formatação, e testes de integração/componente para as funcionalidades principais).
+-----
 
-## O que será Avaliado
+### Atividade 2: Filtragem de Dados
 
-Não existe uma "solução perfeita". Estamos interessados em ver como você aborda o problema. Seus principais pontos de avaliação serão:
+**Objetivo:** Crie uma função que receba uma lista de objetos, onde cada objeto representa um usuário com as propriedades `id`, `nome` e `ativo`. A função deve retornar uma nova lista contendo apenas os usuários que estão com o status `ativo` como `true`.
 
-1.  **Arquitetura e Estrutura do Projeto:**
-    * Organização de pastas e arquivos de forma lógica e escalável.
-    * Clara separação de responsabilidades (componentes, lógica de negócio, acesso a dados, etc.).
+**Exemplo de entrada:**
 
-2.  **Qualidade do Código e Boas Práticas:**
-    * Código limpo, legível e de fácil manutenção.
-    * Uso de convenções de nomenclatura consistentes.
-    * Uso de ferramentas de qualidade de código (linters, formatters) é um grande diferencial.
+```javascript
+const usuarios = [
+  { id: 1, nome: 'Alice', ativo: true },
+  { id: 2, nome: 'Bruno', ativo: false },
+  { id: 3, nome: 'Carla', ativo: true },
+  { id: 4, nome: 'Daniel', ativo: false }
+];
+```
 
-3.  **Modularização e Gerenciamento de Estado:**
-    * Criação de componentes (ou módulos) reutilizáveis e bem definidos.
-    * Escolha e implementação de uma estratégia de gerenciamento de estado que seja coerente com a complexidade da aplicação e a tecnologia escolhida.
+**Saída esperada:**
 
-4.  **Assincronismo e Tratamento de Erros:**
-    * Como você lida com as chamadas assíncronas para a API.
-    * Gerenciamento de estados de carregamento (`loading`) e erro na interface do usuário.
+```javascript
+[
+  { id: 1, nome: 'Alice', ativo: true },
+  { id: 3, nome: 'Carla', ativo: true }
+]
+```
 
-5.  **Testes:**
-    * A relevância e a qualidade dos testes que você escreveu.
-    * Demonstração de entendimento sobre o que e como testar.
+**O que avalia:** Manipulação de arrays/listas e objetos, além do uso de funções de filtro ou laços de repetição.
 
-6.  **Responsividade e Acessibilidade (a11y):**
-    * A aplicação deve ser funcional e agradável em diferentes tamanhos de tela (mobile e desktop).
-    * Uso de HTML semântico e boas práticas de acessibilidade (ex: atributos `alt` em imagens, `aria-label` em botões, contraste de cores, etc.).
+-----
 
-7.  **Versionamento (Git):**
-    * Commits atômicos e com mensagens claras e descritivas (seguindo um padrão como o [Conventional Commits](https://www.conventionalcommits.org/) é um bônus).
-    * Um histórico de commits que conta a história do desenvolvimento.
+### Atividade 3: Agrupamento e Agregação de Dados
 
-8.  **Documentação (README.md):**
-    * **Este é um requisito fundamental.** O `README.md` do seu projeto deve ser claro e conter:
-        * Uma breve descrição do projeto.
-        * A linguagem/framework utilizado.
-        * Os pré-requisitos para rodar o projeto.
-        * As instruções passo a passo para instalar as dependências e executar a aplicação localmente (incluindo a API mock).
-        * Instruções para rodar os testes.
-        * Uma breve explicação sobre as **decisões técnicas** que você tomou (ex: por que escolheu determinada abordagem de estilização, gerenciamento de estado, etc.).
+**Objetivo:** Crie uma função que receba uma lista de objetos representando vendas. Cada objeto contém `produto`, `categoria` e `valor`. A função deve retornar um objeto que resume o total de vendas por categoria.
 
-## Diferenciais (Opcional)
+**Exemplo de entrada:**
 
-Quer ir além? Aqui estão algumas ideias para impressionar:
+```javascript
+const vendas = [
+  { produto: 'Notebook', categoria: 'Eletrônicos', valor: 1500 },
+  { produto: 'Celular', categoria: 'Eletrônicos', valor: 800 },
+  { produto: 'Camiseta', categoria: 'Vestuário', valor: 50 },
+  { produto: 'Calça Jeans', categoria: 'Vestuário', valor: 100 },
+  { produto: 'Monitor', categoria: 'Eletrônicos', valor: 600 }
+];
+```
 
-* Implementar paginação ou "scroll infinito" na lista de transações.
-* Adicionar funcionalidades de ordenação (por data, valor, etc.).
-* Criar uma visualização gráfica simples dos dados (ex: um gráfico de pizza mostrando a proporção de despesas por categoria).
-* Configurar um pipeline de Integração Contínua (CI) com GitHub Actions (ou similar) para rodar os testes e o linter automaticamente.
-* Otimizações de performance (ex: virtualização da lista para grandes volumes de dados).
+**Saída esperada:**
 
-## Entrega
+```javascript
+{
+  'Eletrônicos': 2900,
+  'Vestuário': 150
+}
+```
 
-1.  Crie um repositório público no GitHub (ou serviço de sua preferência).
-2.  Faça o push do seu código, garantindo que o `README.md` esteja completo.
-3.  Envie o link do repositório para o recrutador.
+**O que avalia:** Manipulação avançada de arrays e objetos, uso de estruturas de dados como mapas (ou dicionários) e lógica de agregação de dados.
 
-Boa sorte e divirta-se! Estamos ansiosos para ver seu trabalho.
+-----
+
+### Atividade 4: Validador de Parênteses Balanceados
+
+**Objetivo:** Escreva uma função que receba uma string contendo apenas os caracteres `(`, `)`, `{`, `}`, `[` e `]`, e determine se a sequência de parênteses é válida e balanceada.
+
+**Regras:**
+
+  * Um parêntese de abertura deve ser fechado pelo mesmo tipo de parêntese.
+  * Os parênteses devem ser fechados na ordem correta.
+
+**Exemplos:**
+
+  * `"()"` deve retornar `true`.
+  * `"()[]{}"` deve retornar `true`.
+  * `"(]"` deve retornar `false`.
+  * `"([)]"` deve retornar `false`.
+  * `"{[]}"` deve retornar `true`.
+
+**O que avalia:** Raciocínio algorítmico e o uso de estruturas de dados, especificamente a pilha (stack), para resolver um problema clássico.
+
+-----
+
+### Atividade 5: Validação de Entrada e Tratamento de Erros
+
+**Objetivo:** Crie um endpoint `POST /usuarios` que simule o cadastro de um novo usuário. O corpo da requisição deve conter `nome`, `email` e `senha`. Implemente as seguintes regras de validação no backend:
+
+1.  **nome:** Deve ser uma string com no mínimo 3 caracteres.
+2.  **email:** Deve ser uma string em formato de e-mail válido.
+3.  **senha:** Deve ser uma string com no mínimo 8 caracteres.
+
+**Comportamento esperado:**
+
+  * Se todos os dados forem válidos, retorne um status `201 Created` com uma mensagem de sucesso.
+  * Se um ou mais campos forem inválidos, retorne um status `400 Bad Request` com um corpo de resposta JSON indicando qual campo falhou na validação e o motivo.
+
+**Exemplo de resposta de erro para um e-mail inválido:**
+
+```json
+{
+  "erro": "Dados inválidos",
+  "detalhes": {
+    "email": "O campo email deve ser um endereço de e-mail válido."
+  }
+}
+```
+
+**O que avalia:** Boas práticas de desenvolvimento, validação de dados de entrada (*input validation*), e tratamento de erros com retornos de status HTTP e mensagens claras.
+
+-----
+
+### Atividade 6: Consumo e Formatação de API Externa
+
+**Objetivo:** Crie uma função ou um endpoint (ex: `GET /cep/:cep`) que receba um CEP brasileiro como parâmetro, consulte a API pública **ViaCEP** (`https://viacep.com.br/ws/SEU_CEP/json/`) e retorne um objeto formatado apenas com as informações de `logradouro`, `bairro`, `cidade` e `uf`.
+
+**Exemplo:**
+
+  * Se a função receber o CEP `"01001000"`.
+  * Ela deve fazer uma requisição para `https://viacep.com.br/ws/01001000/json/`.
+  * A API do ViaCEP retornará um objeto completo.
+  * Sua função deve processar essa resposta e retornar o seguinte objeto:
+
+<!-- end list -->
+
+```json
+{
+  "logradouro": "Praça da Sé",
+  "bairro": "Sé",
+  "cidade": "São Paulo",
+  "uf": "SP"
+}
+```
+
+**O que avalia:** Habilidade de fazer requisições HTTP para serviços externos, lidar com programação assíncrona (promises, async/await) e parsear/formatar respostas JSON.
